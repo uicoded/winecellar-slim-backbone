@@ -7,7 +7,7 @@ RewriteEngine On
 # RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [QSA,L]
+RewriteRule ^ winecellar.php [QSA,L]
 
 # rewrite test
 #RewriteRule wines.txt wines2.txt

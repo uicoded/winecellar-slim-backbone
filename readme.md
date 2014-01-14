@@ -17,3 +17,4 @@ Todo:
   - rewrite mod (does not work)
   - add AMD
   - add wine pics
+  - use Slim loger
