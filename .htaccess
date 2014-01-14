@@ -1,0 +1,26 @@
+RewriteEngine On
+
+# Some hosts may require you to use the `RewriteBase` directive.
+# If you need to use the `RewriteBase` directive, it should be the
+# absolute physical path to the directory that contains this htaccess file.
+#
+# RewriteBase /
+
+# Rewrite only if the file is not found
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^ index.php [QSA,L]
+
+# [QSA] 	Append query string
+#       This flag forces the rewriting engine to append a query string part in the
+#       substitution string to the existing one instead of replacing it.
+#       Use this when you want to add more data to the query string via a rewrite rule.
+
+# [L]     Last Rule
+#       Stop the rewriting process here and don’t apply any more rewriting rules.
+#       This corresponds to the Perl last command or the break command from the C language.
+#       Use this flag to prevent the currently rewritten URL from being rewritten further
+#       by following rules. For example, use it to rewrite the root-path 
+#       URL (‘/’) to a real one, e.g., ‘/e/www/’. 
+
+RewriteRule ^wines$ api/wines [QSA]
