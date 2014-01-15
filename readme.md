@@ -14,7 +14,7 @@ Back end:
 
 Todo:
 
-  - [ ] rewrite mod (does not work)
-  - [ ] add AMD
-  - [ ] add wine pics
-  - [ ] use Slim for logging
+- [ ] rewrite mod (does not work)
+- [ ] add AMD
+- [ ] add wine pics
+- [ ] use Slim for logging
