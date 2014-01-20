@@ -5,12 +5,12 @@ window.HeaderView = Backbone.View.extend({
 	},
 	render: function(){
 		this.$el.html(this.template());
-		return this.el;
+		return this.el;	// returning just this would make view chainable
 	},
 	events: {
 		"click .new" : "newWine"
 	},
-
+	//  navigate? should this be job of controller?
 	newWine: function(){
 		app.navigate('wines/new', true);
 		return false;

@@ -24,7 +24,8 @@ function getWines() {
 		$stmt = $db->query($sql);  
 		$wines = $stmt->fetchAll(PDO::FETCH_OBJ);
 		$db = null;
-		echo '{"wine": ' . json_encode($wines) . '}';
+		//echo '{"wine": ' . json_encode($wines) . '}';
+		echo json_encode($wines);
 	} catch(PDOException $e) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}

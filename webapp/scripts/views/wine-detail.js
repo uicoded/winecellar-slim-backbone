@@ -1,10 +1,11 @@
 window.WineDetailView = Backbone.View.extend({
 	initialize: function(){
 		this.template= _.template( tpl.get('wine-detail') );
-		this.model.bind("change", this.render, this);
+		this.model.bind("change", this.render, this);			// View called with option, here: new WineDetailView({model: XYZ});
 	},
 	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
+		//this.$el.html( this.template(this.model.toJSON()));
+		return this.template(this.model.toJSON()); // see main.js where the showView() tries to append views to different containers
 	},
 	events: {
 		'click save':'saveWine',
@@ -30,7 +31,7 @@ window.WineDetailView = Backbone.View.extend({
 			*/
 			app.wineList.create(this.model,{
 				success: function(){
-					app.navigate('wine?' + self.model.id, false);
+					app.navigate('wine?' + self.model.id, false);	// #wine/id
 				}
 			});
 		}else{

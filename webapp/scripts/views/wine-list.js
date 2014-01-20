@@ -4,7 +4,7 @@ window.WineListView = Backbone.View.extend({
 
 	initialize: function(){
 		var self = this;
-		this.model.bind('reset', this.render, this);
+		this.model.bind('reset', this.render, this);		// the model is the collection
 		this.model.bind('add', function(wine){
 			$(self.el).append( new WineListItemView({model:wine}).render() )
 		})
@@ -15,7 +15,7 @@ window.WineListView = Backbone.View.extend({
 			this.$el.append( new WineListItemView({model:wine}).render() )
 		},this);
 
-		return this.el;
+		return this.el; // returning just this would make view chainable
 	}
 });
 
@@ -32,6 +32,6 @@ window.WineListItemView = Backbone.View.extend({
 
 	render: function(){
 		this.$el.html(this.template(this.model.toJSON()));
-		return this.el;
+		return this.el; // returning just this would make view chainable
 	}
 });

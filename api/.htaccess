@@ -6,8 +6,17 @@ RewriteEngine On
 #
 # RewriteBase /
 
+# local address (http://dev:1000/GIT/uic-winecellar-slim-backbone/)
+# and rewrite base test
+#RewriteBase /GIT/uic-winecellar-slim-backbone/api/
+
+# Slim notes:
+# (http://dev:1000/GIT/uic-winecellar-slim-backbone/wines) is picked up by Slim but as 404
+# (http://dev:1000/GIT/uic-winecellar-slim-backbone/wines/13) is not picked up at all - regular 404
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ winecellar.php [QSA,L]
 
-# rewrite test
-#RewriteRule wines.txt wines2.txt
+# rewrite test - WORKS
+# (http://dev:1000/GIT/uic-winecellar-slim-backbone/wines.txt) serves api/wines2.txt
+RewriteRule wines.txt wines2.txt

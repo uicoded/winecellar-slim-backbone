@@ -1,3 +1,12 @@
+/* 
+	Revisit why is this necessary - why it is not part of framework.
+	Now views do not levarage the el atrribute to render to for another function
+	before() to make decision where to render?
+
+	bug the detail view did not return this in render() it was not chainable, but
+	also it did not append the rendered html nor returned the rendered html for the before 
+	function to correctly append it to the selector
+*/ 
 Backbone.View.prototype.close = function(){
 	console.log('Closing view ' + this);
 	if (this.beforeClose){
@@ -30,7 +39,7 @@ var AppRouter = Backbone.Router.extend({
 		if (this.currentView) {
 			this.currentView.close();
 		}
-		$(selector).html(view.render());
+		$(selector).html(view.render());  // <- WineDetailView.render() bug, there is no return value also it probably meant : view.render().el
 		this.currentView = view;
 		return view;
 	},
@@ -44,7 +53,7 @@ var AppRouter = Backbone.Router.extend({
 
 	newWine: function(){
 		this.before(function(){
-			this.showView('#content', new Wine());
+			this.showView('#content', new WineDetailView({model:wine}));  // new Wine()
 		});
 	},
 
@@ -68,8 +77,10 @@ var AppRouter = Backbone.Router.extend({
 	}
 });
 
-// load the templates
-tpl.loadTemplates(['header','wine-detail','wine-list-item','start'], function(){
-	app = new AppRouter();
-	Backbone.history.start();
+$(document).ready(function () { //neccessary?
+	// load the templates
+	tpl.loadTemplates(['header','wine-detail','wine-list-item','start'], function(){
+		app = new AppRouter();
+		Backbone.history.start();
+	});
 });

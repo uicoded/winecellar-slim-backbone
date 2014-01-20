@@ -23,4 +23,17 @@ RewriteEngine On
 #       by following rules. For example, use it to rewrite the root-path 
 #       URL (‘/’) to a real one, e.g., ‘/e/www/’. 
 
+# local setup (http://dev:1000/GIT/uic-winecellar-slim-backbone/)wines
+# should translate to (http://dev:1000/GIT/uic-winecellar-slim-backbone/)api/wines - WORKS
 RewriteRule ^wines$ api/wines [QSA]
+
+# rewrite test - WORKS
+# wines.txt gets translated to api/wines.txt which gets translated to wines2.txt
+# somehow it does not work for winecellar.php at this point
+RewriteRule ^wines.txt$ api/wines.txt [QSA]
+
+# local setup (http://dev:1000/GIT/uic-winecellar-slim-backbone/)
+# and test with rewrite base - Does not help, regular R works
+#RewriteBase /GIT/uic-winecellar-slim-backbone/
+#RewriteRule ^wines/(.*)$ api/wines/$1 [QSA,R]
+#RewriteRule ^wines/(.*)$ api/wines/$1 [QSA]

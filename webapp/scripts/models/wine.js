@@ -9,10 +9,10 @@ window.Wine = Backbone.Model.extend({
         description: "",
         picture: null
     },
-    urlRoot: "wines/"
+    urlRoot: "api/wines"
 });
 
 window.WineCollection = Backbone.Collection.extend({
 	model: Wine,
-	url: "wines/"
+	url: "api/wines"
 });
