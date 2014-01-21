@@ -3,6 +3,8 @@
 	Now views do not levarage the el atrribute to render to for another function
 	before() to make decision where to render?
 
+	consider: http://www.joezimjs.com/javascript/backbone-js-subview-rendering-trick/
+
 	bug the detail view did not return this in render() it was not chainable, but
 	also it did not append the rendered html nor returned the rendered html for the before 
 	function to correctly append it to the selector

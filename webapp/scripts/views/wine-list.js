@@ -1,6 +1,10 @@
+/*
+	@param model
+*/
 window.WineListView = Backbone.View.extend({
 
 	tagName: 'ul',
+	className: 'winelist',
 
 	initialize: function(){
 		var self = this;
