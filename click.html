@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Wine Cellar</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Backbone Event Test">
+		<!-- <link rel="shortcut icon" href="/favicon.ico"> -->
+		<link rel="stylesheet" href="webapp/styles/winecellar.css" />
+		<script src="webapp/lib/jquery-2.0.0.min.js"></script>
+		<script src="webapp/lib/underscore-1.4.4.js"></script>
+		<script src="webapp/lib/backbone-1.1.0.min.js"></script>
+
+	    <script type="text/template" id="button-tpl">
+	        <button>Click ME</button>
+	    </script>
+		<script>
+        (function($){
+
+          ContentView = Backbone.View.extend({
+           
+            el: '#content',
+
+            initialize: function() {
+              this.template= _.template( $('#button-tpl').html() );
+              this.render();
+            },
+
+			events: {
+				"click button":"stop"
+			},
+
+			stop: function(e){
+				e.preventDefault();
+				console.log(e);
+				return false;
+			},
+
+            render: function() {
+
+              this.$el.empty();
+              this.$el.append(this.template);
+              //this.$el.append("<button>click me</button>");
+
+              return this;
+            }
+   
+          });
+
+
+        })(jQuery);
+
+
+        $(document).ready(function () {
+            app = new ContentView();
+        });
+
+		</script>
+	</head>
+	<body>
+		<div id="content"></div>
+	</body>
+</html>
