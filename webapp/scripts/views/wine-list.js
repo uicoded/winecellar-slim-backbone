@@ -8,10 +8,11 @@ window.WineListView = Backbone.View.extend({
 
 	initialize: function(){
 		var self = this;
-		this.model.bind('reset', this.render, this);		// the model is the collection
-		this.model.bind('add', function(wine){
+		this.model.on('reset', this.render, this);		// the model is the collection
+		this.model.on('add', function(wine){
 			$(self.el).append( new WineListItemView({model:wine}).render() )
-		})
+		});
+		this.model.on('remove', this.render, this);		// don't try to search for it, just refresh all
 	},
 
 	render: function () {
@@ -30,8 +31,8 @@ window.WineListItemView = Backbone.View.extend({
 	initialize: function(){
 		// this.template = _.template( $('#wine-list-tmpl').html() );
 		this.template = _.template( tpl.get('wine-list-item') );
-		this.model.bind( 'change', this.render(), this);
-		this.model.bind( 'destroy', this.close(), this);
+		this.model.on( 'change', this.render, this);					// change is not triggered upon save
+		this.model.on( 'destroy', this.close, this);
 	},
 
 	render: function(){

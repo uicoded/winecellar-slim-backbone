@@ -55,6 +55,7 @@ var AppRouter = Backbone.Router.extend({
 
 	newWine: function(){
 		this.before(function(){
+			var wine = new Wine();
 			this.showView('#content', new WineDetailView({model:wine}));  // new Wine()
 		});
 	},

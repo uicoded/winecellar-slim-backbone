@@ -3,6 +3,7 @@
 #require 'Slim/Slim.php';
 require './Slim/Slim.php';
 
+#\Slim\Slim::registerAutoloader();
 \Slim\Slim::registerAutoloader();
 
 //$app = new Slim();
@@ -48,7 +49,7 @@ function getWine($id) {
 
 function addWine() {
 	//error_log('addWine\n', 3, '/var/tmp/php.log'); // rewrite to Slim log
-	$request = Slim::getInstance()->request();
+	$request = \Slim\Slim::getInstance()->request();
 	$wine = json_decode($request->getBody());
 	$sql = "INSERT INTO wine (name, grapes, country, region, year, description) VALUES (:name, :grapes, :country, :region, :year, :description)";
 	try {
@@ -71,7 +72,7 @@ function addWine() {
 }
 
 function updateWine($id) {
-	$request = Slim::getInstance()->request();
+	$request = \Slim\Slim::getInstance()->request();
 	$body = $request->getBody();
 	$wine = json_decode($body);
 	$sql = "UPDATE wine SET name=:name, grapes=:grapes, country=:country, region=:region, year=:year, description=:description WHERE id=:id";
